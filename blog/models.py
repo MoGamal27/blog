@@ -11,6 +11,9 @@ class Post(models.Model):
     
     class Mete:
         ordering = ['-published']
+        indexes = [
+            models.Index(fields=['-published'])
+        ]
     
     def __str__(self):
         return self.title
