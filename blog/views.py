@@ -7,9 +7,9 @@ def post_list(request):
     return render(request, 'blog/post/list.html', {'posts': posts})
 
 
-def post_detail(request, id):
+def post_detail(request, year, month, day, post):
     try:
-        post = Post.objects.get(id=id)
+        post = Post.objects.get(slug=post, publish__year=year, publish__month=month, publish__day=day)
     except Post.DoesNotExist:
         raise Http404('Not Found')
     
